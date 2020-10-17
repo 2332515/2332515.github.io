@@ -2,7 +2,7 @@ jsproxy_config({
   // 当前配置的版本（记录在日志中，用于排查问题）
   // 每次修改配置，该值需要增加，否则不会生效。
   // 默认每隔 5 分钟自动下载配置，若想立即验证，可通过隐私模式访问。
-  ver: '110',
+  ver: '111',
 
   // 通过 CDN 加速常用网站的静态资源（实验中）
   static_boost: {
@@ -12,16 +12,22 @@ jsproxy_config({
 
   // 节点配置
   node_map: {
-    'mysite': {
+    '1': {
       label: '线路1-Vercel',
       lines: {
         [location.host]: 1,
       }
     },
-	'mysite': {
-      label: '线路2-Vercel',
+    '4': {
+      label: '线路2-Cloudflare',
       lines: {
-        [location.host]: 1,
+        'xl4.xcwosjw.tk': 1,
+      }
+    },
+    '5': {
+      label: '线路3-Cloudflare',
+      lines: {
+        'xl5.xcwosjw.tk': 1,
       }
     },
     // 该节点用于加载大体积的静态资源
@@ -40,7 +46,7 @@ jsproxy_config({
   /**
    * 默认节点
    */
-  node_default: 'mysite',
+  node_default: '1',
   // node_default: /jsproxy-demo\.\w+$/.test(location.host) ? 'demo-hk' : 'mysite',
 
   /**
